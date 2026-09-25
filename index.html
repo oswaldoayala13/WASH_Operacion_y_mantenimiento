@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>WASH – Operación y Mantenimiento</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="dashboard_files/libs/clipboard/clipboard.min.js"></script>
+<script src="dashboard_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="dashboard_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="dashboard_files/libs/quarto-html/popper.min.js"></script>
+<script src="dashboard_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="dashboard_files/libs/quarto-html/anchor.min.js"></script>
+<link href="dashboard_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="dashboard_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="dashboard_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="dashboard_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="dashboard_files/libs/bootstrap/bootstrap-215b371544c282197b31c8aa00ce3677.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+<link rel="stylesheet" href="estilos_wash.css">
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">WASH – Operación y Mantenimiento</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+:root{--verde:#075e4d;--verde2:#159a78;--verde3:#e9f6f1;--borde:#cde6dd;--texto:#344c46;--fondo:#f3faf7}
+body{background:var(--fondo);font-family:Arial,sans-serif;color:var(--texto);margin:0}
+.quarto-title-block{display:none!important}.page-columns,.page-layout-article{max-width:none!important}.content{max-width:none!important}
+.wash-hero,.wash-filter-box,.wash-tabs,.tab-panel,.wash-footer{width:calc(100vw - 28px);max-width:1600px;margin-left:auto;margin-right:auto;box-sizing:border-box}
+.wash-hero{margin-top:12px;margin-bottom:22px;background:linear-gradient(120deg,#fff,#f4fbf8);border-bottom:5px solid var(--verde2);border-radius:0 0 22px 22px;box-shadow:0 8px 22px #075e4d18;display:flex;align-items:center;padding:18px 32px;gap:28px}
+.wash-logo-wrap{width:250px;display:flex;justify-content:center;align-items:center}.wash-logo{display:block;max-width:230px;max-height:82px;width:auto;height:auto;object-fit:contain}.wash-title-wrap{flex:1}.wash-kicker{font-size:14px;font-weight:800;letter-spacing:2px;color:var(--verde2);margin-bottom:4px}.wash-title-wrap h1{color:var(--verde);font-size:36px;line-height:1.12;margin:0 0 7px;font-weight:800}.wash-title-wrap p{margin:0;font-size:17px;color:#657c75}
+.wash-filter-box{background:#fff;border:1px solid var(--borde);border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 4px 15px #075e4d10}.wash-filter-title{font-size:19px;font-weight:800;color:var(--verde);margin-bottom:14px}.wash-filter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.wash-filter-grid label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}.wash-filter-grid select{width:100%;height:44px;border:1px solid #c9dfd7;border-radius:9px;padding:0 10px;background:#fff;color:#344c46;font-size:15px}.wash-clear{margin-top:17px;background:var(--verde);color:#fff;border:0;border-radius:9px;padding:11px 20px;font-weight:800;cursor:pointer}.wash-clear:hover{background:var(--verde2)}
+.wash-tabs{display:flex;background:var(--verde);border-radius:15px;overflow:hidden;margin-bottom:20px}.tab-button{flex:1;background:transparent;color:#fff;border:0;padding:15px 12px;font-size:16px;font-weight:800;cursor:pointer}.tab-button.active{background:var(--verde2)}.tab-panel{display:none}.tab-panel.active{display:block}
+.wash-kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:18px}.wash-card{background:#fff;border:1px solid var(--borde);border-left:5px solid var(--verde2);border-radius:14px;padding:18px 16px;box-shadow:0 4px 15px #075e4d0b}.wash-card-title{font-size:13px;font-weight:800;color:#71867f;letter-spacing:.3px}.wash-card-value{font-size:31px;font-weight:800;color:var(--verde);margin-top:12px}.wash-card-sub{font-size:14px;color:#748981;margin-top:8px}
+.wash-grid-2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-bottom:18px}.wash-chart{background:#fff;border:1px solid var(--borde);border-radius:15px;padding:14px;min-height:320px;box-sizing:border-box;box-shadow:0 4px 15px #075e4d0b;margin-bottom:18px}.wash-svg{width:100%;height:auto;min-height:260px}.svg-title{font-weight:800;fill:var(--verde);font-size:17px}.svg-label{fill:#536b63;font-size:12px}.svg-value{fill:#3b554d;font-size:12px;font-weight:700}.svg-bar{fill:var(--verde2)}.no-data{display:flex;align-items:center;justify-content:center;height:260px;color:#80948e;font-style:italic}.no-data.short{height:80px}
+.wash-table-note{background:#eef8f4;border-left:4px solid var(--verde2);padding:12px 15px;border-radius:8px;margin-bottom:18px}.wash-table-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.wash-table-grid>div{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:15px}.wash-table-grid h3{color:var(--verde);margin-top:0}.wash-table{width:100%;border-collapse:collapse;font-size:14px}.wash-table th{background:var(--verde);color:#fff;text-align:left;padding:9px}.wash-table td{padding:8px;border-bottom:1px solid #e3eee9}.wash-table tr:nth-child(even){background:#f5faf8}.wash-footer{text-align:center;color:#789088;padding:25px 0 35px;font-size:13px}
+@media(max-width:900px){.wash-hero{flex-direction:column;text-align:center}.wash-logo-wrap{width:auto}.wash-filter-grid,.wash-kpi-grid,.wash-grid-2,.wash-table-grid{grid-template-columns:1fr}.wash-tabs{overflow-x:auto}.tab-button{min-width:180px}.wash-title-wrap h1{font-size:29px}}
+</style>
+<div class="wash-hero">
+<div class="wash-logo-wrap">
+<img src="logo.png" class="wash-logo" alt="Logo">
+</div>
+<div class="wash-title-wrap">
+<div class="wash-kicker">
+DASHBOARD DE SEGUIMIENTO
+</div>
+<h1>
+WASH – Operación y Mantenimiento
+</h1>
+<p>
+Participación, actividades y características de las personas registradas
+</p>
+</div>
+</div>
+<div class="wash-filter-box">
+<div class="wash-filter-title">
+Filtros de consulta
+</div>
+<div class="wash-filter-grid">
+<div>
+<label for="f_fecha">Fecha</label><select id="f_fecha"></select>
+</div>
+<div>
+<label for="f_actividad">Actividad</label><select id="f_actividad"></select>
+</div>
+<div>
+<label for="f_departamento">Departamento</label><select id="f_departamento"></select>
+</div>
+<div>
+<label for="f_municipio">Municipio</label><select id="f_municipio"></select>
+</div>
+</div>
+<button id="clearFilters" class="wash-clear">
+↻ Limpiar filtros
+</button>
+</div>
+<div class="wash-tabs">
+<button class="tab-button active" data-tab="resumen">
+Resumen
+</button>
+<button class="tab-button" data-tab="perfil">
+Perfil de participantes
+</button>
+<button class="tab-button" data-tab="tablas">
+Tablas detalladas
+</button>
+<button class="tab-button" data-tab="cruces">
+Cruces
+</button>
+</div>
+<section class="tab-panel active" id="tab-resumen">
+<div class="wash-kpi-grid">
+<div class="wash-card">
+<div class="wash-card-title">
+PARTICIPANTES
+</div>
+<div id="kpiParticipantes" class="wash-card-value">
+—
+</div>
+<div class="wash-card-sub">
+Personas registradas
+</div>
+</div>
+<div class="wash-card">
+<div class="wash-card-title">
+EVENTOS
+</div>
+<div id="kpiEventos" class="wash-card-value">
+—
+</div>
+<div class="wash-card-sub">
+Eventos con participantes
+</div>
+</div>
+<div class="wash-card">
+<div class="wash-card-title">
+EDAD PROMEDIO
+</div>
+<div id="kpiEdad" class="wash-card-value">
+—
+</div>
+<div class="wash-card-sub">
+Años
+</div>
+</div>
+<div class="wash-card">
+<div class="wash-card-title">
+MUJERES
+</div>
+<div id="kpiMujeres" class="wash-card-value">
+—
+</div>
+<div id="kpiMujeresSub" class="wash-card-sub">
+
+</div>
+</div>
+<div class="wash-card">
+<div class="wash-card-title">
+HOMBRES
+</div>
+<div id="kpiHombres" class="wash-card-value">
+—
+</div>
+<div id="kpiHombresSub" class="wash-card-sub">
+
+</div>
+</div>
+</div>
+<div class="wash-grid-2">
+<div id="chartActividad" class="wash-chart">
+
+</div>
+<div id="chartMunicipio" class="wash-chart">
+
+</div>
+</div>
+<div id="chartDepartamento" class="wash-chart">
+
+</div>
+</section>
+<section class="tab-panel" id="tab-perfil">
+<div class="wash-grid-2">
+<div id="chartSexo" class="wash-chart">
+
+</div>
+<div id="chartEdad" class="wash-chart">
+
+</div>
+</div>
+<div class="wash-grid-2">
+<div id="chartTipo" class="wash-chart">
+
+</div>
+<div id="chartCargo" class="wash-chart">
+
+</div>
+</div>
+<div class="wash-grid-2">
+<div id="chartInstitucion" class="wash-chart">
+
+</div>
+<div id="chartPrograma" class="wash-chart">
+
+</div>
+</div>
+</section>
+<section class="tab-panel" id="tab-tablas">
+<div class="wash-table-note">
+Las tablas presentan únicamente información agregada. No se muestran nombres, DNI ni registros individuales.
+</div>
+<div class="wash-table-grid">
+<div>
+<h3 class="anchored">
+Actividad
+</h3>
+<div id="tableActividad">
+
+</div>
+</div>
+<div>
+<h3 class="anchored">
+Departamento
+</h3>
+<div id="tableDepartamento">
+
+</div>
+</div>
+<div>
+<h3 class="anchored">
+Municipio
+</h3>
+<div id="tableMunicipio">
+
+</div>
+</div>
+<div>
+<h3 class="anchored">
+Sexo
+</h3>
+<div id="tableSexo">
+
+</div>
+</div>
+</div>
+</section>
+<section class="tab-panel" id="tab-cruces">
+<div class="wash-grid-2">
+<div id="chartCruceSexoDepto" class="wash-chart">
+<div class="no-data">
+Cruce preparado para una siguiente ampliación.
+</div>
+</div>
+<div id="chartCruceActividadSexo" class="wash-chart">
+<div class="no-data">
+Cruce preparado para una siguiente ampliación.
+</div>
+</div>
+</div>
+<div id="chartModalidad" class="wash-chart">
+
+</div>
+</section>
+<div class="wash-footer">
+Dashboard WASH – Operación y Mantenimiento
+</div>
+<script>window.WASH_DATA = {"cube":[{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":9,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":6,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":4,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":5,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"actividad","categoria":"5. Rehabilitar la infraestructura escolar","n":3,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"departamento","categoria":"La Paz","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"departamento","categoria":"La Paz","n":9,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"departamento","categoria":"La Paz","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"departamento","categoria":"La Paz","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"departamento","categoria":"La Paz","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"departamento","categoria":"La Paz","n":6,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"departamento","categoria":"La Paz","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"departamento","categoria":"La Paz","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"departamento","categoria":"La Paz","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"departamento","categoria":"Intibuca","n":4,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"departamento","categoria":"Intibuca","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"departamento","categoria":"Intibuca","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"departamento","categoria":"Intibuca","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"departamento","categoria":"Intibuca","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"departamento","categoria":"Intibuca","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"departamento","categoria":"Intibuca","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"departamento","categoria":"Intibuca","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"departamento","categoria":"Intibuca","n":5,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"departamento","categoria":"Intibuca","n":3,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"municipio","categoria":"AGUANQUETERIQUE","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"municipio","categoria":"Aguanqueterique","n":9,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"municipio","categoria":"La Paz","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"municipio","categoria":"San Juan","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"municipio","categoria":"GUAIJIQUIRO","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"municipio","categoria":"Guajiquiro","n":6,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"municipio","categoria":"La Paz","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"municipio","categoria":"Lauterique","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"municipio","categoria":"San Antonio del Norte","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"municipio","categoria":"Colomoncagua","n":4,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"municipio","categoria":"CAMASCA","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"municipio","categoria":"Camasca","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"municipio","categoria":"Colomoncagua","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"municipio","categoria":"Concepcion","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"municipio","categoria":"MAGDALENA","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"municipio","categoria":"Magdalena","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"municipio","categoria":"SAN MARCOS DE LA SIERRA","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"municipio","categoria":"San Marcos de Sierra","n":5,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"municipio","categoria":"Santa Lucia","n":3,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"sexo","categoria":"Hombre","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"sexo","categoria":"Hombre","n":8,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"sexo","categoria":"Mujer","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"sexo","categoria":"Hombre","n":3,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"sexo","categoria":"Mujer","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"sexo","categoria":"Hombre","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"sexo","categoria":"Hombre","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"sexo","categoria":"Hombre","n":4,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"sexo","categoria":"Mujer","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"sexo","categoria":"Hombre","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"sexo","categoria":"Hombre","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"sexo","categoria":"Hombre","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"sexo","categoria":"Hombre","n":4,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"sexo","categoria":"Hombre","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"sexo","categoria":"Hombre","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"sexo","categoria":"Mujer","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"sexo","categoria":"Hombre","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"sexo","categoria":"Hombre","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"sexo","categoria":"Hombre","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"sexo","categoria":"Hombre","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"sexo","categoria":"Hombre","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"sexo","categoria":"Hombre","n":4,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"sexo","categoria":"Mujer","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"sexo","categoria":"Hombre","n":3,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"grupo_edad","categoria":"30–44","n":2,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"grupo_edad","categoria":"45–59","n":2,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"grupo_edad","categoria":"18–29","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"grupo_edad","categoria":"30–44","n":6,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"grupo_edad","categoria":"45–59","n":2,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"grupo_edad","categoria":"18–29","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"grupo_edad","categoria":"30–44","n":2,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"grupo_edad","categoria":"18–29","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"grupo_edad","categoria":"30–44","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"grupo_edad","categoria":"45–59","n":3,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"grupo_edad","categoria":"30–44","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"grupo_edad","categoria":"60 y más","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"grupo_edad","categoria":"30–44","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"grupo_edad","categoria":"18–29","n":1,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"grupo_edad","categoria":"30–44","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"grupo_edad","categoria":"30–44","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"grupo_edad","categoria":"60 y más","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"grupo_edad","categoria":"30–44","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"grupo_edad","categoria":"18–29","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"grupo_edad","categoria":"30–44","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"grupo_edad","categoria":"18–29","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"grupo_edad","categoria":"30–44","n":3,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"grupo_edad","categoria":"60 y más","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"grupo_edad","categoria":"30–44","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"grupo_edad","categoria":"45–59","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"cargo","categoria":"Presidente (a)","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"cargo","categoria":"Presidente (a)","n":3,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"cargo","categoria":"Secretario (a)","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"cargo","categoria":"Vicepresidente (a)","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"cargo","categoria":"Voluntario","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"cargo","categoria":"Otro","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"cargo","categoria":"Presidente (a)","n":3,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"cargo","categoria":"Voluntario","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"cargo","categoria":"Voluntario","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"cargo","categoria":"Presidente (a)","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"cargo","categoria":"Secretario (a)","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"cargo","categoria":"Tesorero (a)","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"cargo","categoria":"Voluntario","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"cargo","categoria":"Enlace de alimentación escolar","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"cargo","categoria":"Otro","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"cargo","categoria":"Otro","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"cargo","categoria":"Vicepresidente (a)","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"cargo","categoria":"Presidente (a)","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"cargo","categoria":"Coordinador (a)","n":1,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"cargo","categoria":"Padre, madre o tutor","n":1,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"cargo","categoria":"Secretario (a)","n":1,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"cargo","categoria":"Voluntario","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"cargo","categoria":"Fiscal","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"cargo","categoria":"Líder CAE","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"cargo","categoria":"Presidente (a)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"cargo","categoria":"Vicepresidente (a)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"cargo","categoria":"Presidente (a)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"cargo","categoria":"Vicepresidente (a)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"cargo","categoria":"Voluntario","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"cargo","categoria":"Presidente (a)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"cargo","categoria":"Líder CAE","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"cargo","categoria":"Miembro","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"cargo","categoria":"Fiscal","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"cargo","categoria":"Presidente (a)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"cargo","categoria":"Secretario (a)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"cargo","categoria":"Vicepresidente (a)","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"cargo","categoria":"Presidente (a)","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"cargo","categoria":"Voluntario","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":7,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"institucion","categoria":"Junta de Agua","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"institucion","categoria":"Padres, madres y cuidadores","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"institucion","categoria":"Padres, madres y cuidadores","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":6,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"institucion","categoria":"DDE","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"institucion","categoria":"Junta de Agua","n":1,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"institucion","categoria":"Comité de Alimentación Escolar (CAE)","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"institucion","categoria":"Padres, madres y cuidadores","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"institucion","categoria":"Comité de Alimentación Escolar (CAE)","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"institucion","categoria":"Padres, madres y cuidadores","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"institucion","categoria":"Comité de Alimentación Escolar (CAE)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"institucion","categoria":"Comité de Alimentación Escolar (CAE)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":5,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"institucion","categoria":"Asociación de Padres de Familia (APF)","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"institucion","categoria":"Junta de Agua","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"institucion","categoria":"Padres, madres y cuidadores","n":1,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":9,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":6,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":4,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":5,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"programa","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":3,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":9,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":6,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":4,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":5,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"modulo","categoria":"Operación y mantenimiento de sistemas de agua, módulos sanitarios y cocina-bodega","n":3,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"modalidad","categoria":"Presencial","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"modalidad","categoria":"Presencial","n":9,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"modalidad","categoria":"Presencial","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"modalidad","categoria":"Presencial","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"modalidad","categoria":"Presencial","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"modalidad","categoria":"Presencial","n":6,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"modalidad","categoria":"Presencial","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"modalidad","categoria":"Presencial","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"modalidad","categoria":"Presencial","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"modalidad","categoria":"Presencial","n":4,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"modalidad","categoria":"Presencial","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"modalidad","categoria":"Presencial","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"modalidad","categoria":"Presencial","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"modalidad","categoria":"Presencial","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"modalidad","categoria":"Presencial","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"modalidad","categoria":"Presencial","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"modalidad","categoria":"Presencial","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"modalidad","categoria":"Presencial","n":5,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"modalidad","categoria":"Presencial","n":3,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"__total__","categoria":"TOTAL","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"__total__","categoria":"TOTAL","n":9,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"__total__","categoria":"TOTAL","n":4,"suma_edad":null},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"__total__","categoria":"TOTAL","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"__total__","categoria":"TOTAL","n":1,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"__total__","categoria":"TOTAL","n":6,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"__total__","categoria":"TOTAL","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"__total__","categoria":"TOTAL","n":2,"suma_edad":null},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"__total__","categoria":"TOTAL","n":2,"suma_edad":null},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"__total__","categoria":"TOTAL","n":4,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"__total__","categoria":"TOTAL","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"__total__","categoria":"TOTAL","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"__total__","categoria":"TOTAL","n":2,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"__total__","categoria":"TOTAL","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"__total__","categoria":"TOTAL","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"__total__","categoria":"TOTAL","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"__total__","categoria":"TOTAL","n":1,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"__total__","categoria":"TOTAL","n":5,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"__total__","categoria":"TOTAL","n":3,"suma_edad":null},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","variable":"__edad__","categoria":"TOTAL","n":5,"suma_edad":191},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"__edad__","categoria":"TOTAL","n":2,"suma_edad":90},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","variable":"__edad__","categoria":"TOTAL","n":1,"suma_edad":51},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","variable":"__edad__","categoria":"TOTAL","n":3,"suma_edad":121},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","variable":"__edad__","categoria":"TOTAL","n":2,"suma_edad":130},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","variable":"__edad__","categoria":"TOTAL","n":2,"suma_edad":87},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","variable":"__edad__","categoria":"TOTAL","n":1,"suma_edad":18},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","variable":"__edad__","categoria":"TOTAL","n":1,"suma_edad":53},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","variable":"__edad__","categoria":"TOTAL","n":1,"suma_edad":34},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","variable":"__edad__","categoria":"TOTAL","n":4,"suma_edad":162},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","variable":"__edad__","categoria":"TOTAL","n":9,"suma_edad":353},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","variable":"__edad__","categoria":"TOTAL","n":1,"suma_edad":50},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"__edad__","categoria":"TOTAL","n":4,"suma_edad":147},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","variable":"__edad__","categoria":"TOTAL","n":6,"suma_edad":259},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","variable":"__edad__","categoria":"TOTAL","n":1,"suma_edad":48},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","variable":"__edad__","categoria":"TOTAL","n":2,"suma_edad":121},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","variable":"__edad__","categoria":"TOTAL","n":2,"suma_edad":83},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","variable":"__edad__","categoria":"TOTAL","n":2,"suma_edad":90},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","variable":"__edad__","categoria":"TOTAL","n":4,"suma_edad":147}],"events":[{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"AGUANQUETERIQUE","n_eventos":1},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Aguanqueterique","n_eventos":1},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","n_eventos":1},{"fecha":"02/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Juan","n_eventos":1},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"GUAIJIQUIRO","n_eventos":1},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Guajiquiro","n_eventos":1},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"La Paz","n_eventos":1},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"Lauterique","n_eventos":1},{"fecha":"03/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"La Paz","municipio":"San Antonio del Norte","n_eventos":1},{"fecha":"04/09/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","n_eventos":1},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"CAMASCA","n_eventos":1},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Camasca","n_eventos":1},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Colomoncagua","n_eventos":1},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Concepcion","n_eventos":1},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"MAGDALENA","n_eventos":1},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Magdalena","n_eventos":1},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"SAN MARCOS DE LA SIERRA","n_eventos":1},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"San Marcos de Sierra","n_eventos":1},{"fecha":"31/08/2026","actividad":"5. Rehabilitar la infraestructura escolar","departamento":"Intibuca","municipio":"Santa Lucia","n_eventos":1}],"options":{"fecha":["02/09/2026","03/09/2026","04/09/2026","31/08/2026"],"actividad":"5. Rehabilitar la infraestructura escolar","departamento":["Intibuca","La Paz"],"municipio":["Aguanqueterique","AGUANQUETERIQUE","Camasca","CAMASCA","Colomoncagua","Concepcion","GUAIJIQUIRO","Guajiquiro","La Paz","Lauterique","Magdalena","MAGDALENA","San Antonio del Norte","San Juan","SAN MARCOS DE LA SIERRA","San Marcos de Sierra","Santa Lucia"]}};</script>
+<script>(function(){
+  'use strict';
+  const DATA = window.WASH_DATA || {cube:[], events:[], options:{}};
+  const CUBE = Array.isArray(DATA.cube) ? DATA.cube : [];
+  const EVENTS = Array.isArray(DATA.events) ? DATA.events : [];
+  const OPTIONS = DATA.options || {};
+  const FILTERS = ['fecha','actividad','departamento','municipio'];
+
+  function fmt(n){ return Number(n||0).toLocaleString('es-HN'); }
+  function pct(n,d){ return d ? (100*n/d).toFixed(1)+'%' : '—'; }
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(m){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+    });
+  }
+  function selected(){
+    const o={};
+    FILTERS.forEach(function(f){
+      const e=document.getElementById('f_'+f);
+      if(e && e.value && e.value!=='__ALL__') o[f]=e.value;
+    });
+    return o;
+  }
+  function matches(r,s){ return FILTERS.every(function(f){ return !s[f] || r[f]===s[f]; }); }
+  function rowsFor(s){ return CUBE.filter(function(r){ return matches(r,s); }); }
+  function eventRowsFor(s){ return EVENTS.filter(function(r){ return matches(r,s); }); }
+  function aggregate(v,s,limit){
+    const m=new Map();
+    rowsFor(s).filter(function(r){ return r.variable===v && r.categoria && r.categoria!=='__MISSING__'; }).forEach(function(r){
+      m.set(r.categoria,(m.get(r.categoria)||0)+Number(r.n||0));
+    });
+    const a=Array.from(m.entries()).map(function(x){return {categoria:x[0],n:x[1]};}).sort(function(a,b){return b.n-a.n;});
+    return limit ? a.slice(0,limit) : a;
+  }
+  function total(s){ return rowsFor(s).filter(function(r){return r.variable==='__total__';}).reduce(function(z,r){return z+Number(r.n||0);},0); }
+  function avgAge(s){
+    const a=rowsFor(s).filter(function(r){return r.variable==='__edad__';});
+    const n=a.reduce(function(z,r){return z+Number(r.n||0);},0);
+    const sm=a.reduce(function(z,r){return z+Number(r.suma_edad||0);},0);
+    return n ? sm/n : null;
+  }
+
+  function chartSvg(data,title,horizontal){
+    if(!data.length) return '<div class="no-data">No hay información para la selección.</div>';
+    const max=Math.max.apply(null,data.map(function(d){return d.n;} ).concat([1]));
+    const W=760, H=horizontal ? Math.max(250,data.length*34+75) : 350;
+    const left=horizontal?205:55, right=28, top=55, bottom=horizontal?25:110;
+    const pw=W-left-right, ph=H-top-bottom;
+    let svg='<svg class="wash-svg" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(title)+'">';
+    svg+='<text x="'+(W/2)+'" y="27" text-anchor="middle" class="svg-title">'+esc(title)+'</text>';
+    if(horizontal){
+      const gap=ph/data.length, bh=Math.max(16,Math.min(28,gap*.62));
+      data.forEach(function(d,i){
+        const y=top+i*gap+(gap-bh)/2, bw=pw*d.n/max;
+        svg+='<text x="'+(left-8)+'" y="'+(y+bh*.72)+'" text-anchor="end" class="svg-label">'+esc(d.categoria)+'</text>';
+        svg+='<rect x="'+left+'" y="'+y+'" width="'+bw+'" height="'+bh+'" rx="5" class="svg-bar"></rect>';
+        svg+='<text x="'+(left+bw+7)+'" y="'+(y+bh*.72)+'" class="svg-value">'+fmt(d.n)+'</text>';
+      });
+    } else {
+      const step=pw/data.length, bw=Math.max(18,step*.62);
+      data.forEach(function(d,i){
+        const x=left+i*step+(step-bw)/2, bh=ph*d.n/max, y=top+ph-bh;
+        svg+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+bh+'" rx="5" class="svg-bar"></rect>';
+        svg+='<text x="'+(x+bw/2)+'" y="'+(y-7)+'" text-anchor="middle" class="svg-value">'+fmt(d.n)+'</text>';
+        svg+='<text x="'+(x+bw/2)+'" y="'+(top+ph+18)+'" text-anchor="end" transform="rotate(-35 '+(x+bw/2)+' '+(top+ph+18)+')" class="svg-label">'+esc(d.categoria)+'</text>';
+      });
+    }
+    return svg+'</svg>';
+  }
+  function renderBar(id,data,title,h){ const el=document.getElementById(id); if(el) el.innerHTML=chartSvg(data,title,h); }
+  function renderTable(id,data){
+    const el=document.getElementById(id); if(!el) return;
+    if(!data.length){el.innerHTML='<div class="no-data short">No hay información.</div>';return;}
+    const t=data.reduce(function(z,d){return z+d.n;},0);
+    el.innerHTML='<table class="wash-table"><thead><tr><th>Categoría</th><th>Participantes</th><th>Porcentaje</th></tr></thead><tbody>'+data.map(function(d){return '<tr><td>'+esc(d.categoria)+'</td><td>'+fmt(d.n)+'</td><td>'+pct(d.n,t)+'</td></tr>';}).join('')+'</tbody></table>';
+  }
+  function populate(){
+    FILTERS.forEach(function(f){
+      const e=document.getElementById('f_'+f); if(!e)return;
+      const vals=Array.isArray(OPTIONS[f]) ? OPTIONS[f] : [];
+      e.innerHTML='<option value="__ALL__">Todos</option>'+vals.map(function(v){return '<option value="'+esc(v)+'">'+esc(v)+'</option>';}).join('');
+      e.addEventListener('change',update);
+    });
+  }
+  function update(){
+    const s=selected(), n=total(s), age=avgAge(s), er=eventRowsFor(s);
+    const set=function(id,v){const e=document.getElementById(id);if(e)e.textContent=v;};
+    set('kpiParticipantes',fmt(n));
+    set('kpiEventos',fmt(er.reduce(function(z,r){return z+Number(r.n_eventos||0);},0)));
+    set('kpiEdad',age==null?'—':age.toFixed(1));
+    const w=(aggregate('sexo',s).find(function(d){return d.categoria==='Mujer';})||{n:0}).n;
+    const h=(aggregate('sexo',s).find(function(d){return d.categoria==='Hombre';})||{n:0}).n;
+    set('kpiMujeres',pct(w,n)); set('kpiMujeresSub',fmt(w)+' personas');
+    set('kpiHombres',pct(h,n)); set('kpiHombresSub',fmt(h)+' personas');
+    renderBar('chartActividad',aggregate('actividad',s),'Participantes por actividad',true);
+    renderBar('chartMunicipio',aggregate('municipio',s,10),'Participantes por municipio',true);
+    renderBar('chartDepartamento',aggregate('departamento',s),'Participantes por departamento',true);
+    renderBar('chartSexo',aggregate('sexo',s),'Participantes por sexo',false);
+    renderBar('chartEdad',aggregate('grupo_edad',s),'Participantes por grupo de edad',false);
+    renderBar('chartTipo',aggregate('tipo_registro',s),'Tipo de registro',false);
+    renderBar('chartCargo',aggregate('cargo',s,12),'Participantes por cargo',true);
+    renderBar('chartInstitucion',aggregate('institucion',s,12),'Participantes por institución',true);
+    renderBar('chartPrograma',aggregate('programa',s,12),'Participantes por programa / taller',true);
+    renderTable('tableActividad',aggregate('actividad',s));
+    renderTable('tableDepartamento',aggregate('departamento',s));
+    renderTable('tableMunicipio',aggregate('municipio',s));
+    renderTable('tableSexo',aggregate('sexo',s));
+    renderBar('chartModalidad',aggregate('modalidad',s),'Participantes por modalidad',false);
+  }
+  function init(){
+    document.querySelectorAll('.tab-button').forEach(function(b){b.addEventListener('click',function(){
+      document.querySelectorAll('.tab-button').forEach(function(x){x.classList.remove('active');});
+      document.querySelectorAll('.tab-panel').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      const p=document.getElementById('tab-'+b.dataset.tab); if(p)p.classList.add('active');
+    });});
+    const clear=document.getElementById('clearFilters');
+    if(clear) clear.addEventListener('click',function(){FILTERS.forEach(function(f){const e=document.getElementById('f_'+f);if(e)e.value='__ALL__';});update();});
+    populate();
+    update();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();</script>
+<p>/* ===== Ajuste de ventana / ancho completo ===== */ html, body { width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; overflow-x: hidden !important; } #quarto-content, .page-columns, .page-layout-article, main.content, .content { width: 100% !important; max-width: none !important; min-width: 0 !important; margin: 0 !important; padding-left: 0 !important; padding-right: 0 !important; } .page-columns { display: block !important; } .wash-hero, .wash-filter-box, .wash-tabs, .tab-panel, .wash-footer { width: min(1600px, calc(100vw - 32px)) !important; max-width: 1600px !important; min-width: 0 !important; margin-left: auto !important; margin-right: auto !important; } .wash-filter-grid, .wash-kpi-grid, .wash-grid-2, .wash-table-grid { min-width: 0 !important; } .wash-filter-grid &gt; div, .wash-card, .wash-chart { min-width: 0 !important; } <span class="citation" data-cites="media">@media</span> (max-width: 1200px) { .wash-hero, .wash-filter-box, .wash-tabs, .tab-panel, .wash-footer { width: calc(100vw - 28px) !important; } }</p>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
